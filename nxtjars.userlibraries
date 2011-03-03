@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<eclipse-userlibraries version="2">
+<library name="NXJ_JARS" systemlibrary="false">
+<archive path="~/lejos_nxj/lib/classes.jar" source="~/lejos_nxj/projects/classes"/>
+<archive path="~/lejos_nxj/lib/jtools.jar" source="~/lejos_nxj/projects/jtools"/>
+<archive path="~/lejos_nxj/lib/pccomm.jar" source="~/lejos_nxj/projects/pccomms"/>
+<archive path="~/lejos_nxj/lib/pctools.jar" source="~/lejos_nxj/projects/pctools"/>
+</library>
+</eclipse-userlibraries>
