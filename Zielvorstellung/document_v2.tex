@@ -1,0 +1,138 @@
+\documentclass[a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[ngermanb]{babel}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{units}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{color}
+\usepackage{float}
+\usepackage{lscape}
+\title{Lost Vikings in Lego-Mindstorms}
+\author{Gruppe 1}
+\date{}
+\begin{document}
+	\maketitle
+	\section{Zielvorstellung}
+	Um die im Rahmen des Lego-Mindstorms Programmierpraktikums gestellte Großaufgabe zu bewältigen, sind folgende Teile zu bearbeiten:
+	\subsection{Schildroboter (Brügge/ \texttt{Wall-E})}
+	Die Bearbeitung der Aufgabe erstreckt sich über zwei Tische. Diese befinden sich im Abstand von \unit[15]{cm}. Daher ist es notwendig eine Brücke zu konstruieren. Diese wird von Wall-E bereitgestellt und platziert.
+	\subsection{Schlüsselroboter (Schlüssi/ E.T.)}
+	Der Schlüsselroboter muss ein Tor öffnen, das sich auf dem zweiten Tisch befindet. Dies geschieht mithilfe eines RFID%\footnote{Radio Frequency Identification}
+- Tags, welches auf einem Schlüssel angebracht ist. Der Schlüssel befindet sich auf einem der beiden Tische.
+	\subsection{Torroboter (Thor)}
+	Die einzige Daseinsberechtigung zieht Thor aus der Aufgabe, das Tor zum Zielbereich zu öffnen. Dies geschieht nur nach Vorzeigen des RFID- Schlüssels.
+	\subsection{Schatzroboter (Schatzi/ Nummer 5)}
+	Der Schatzroboter soll die Schatzkiste finden, die sich auch auf einem der beiden Tische befindet. Sein Schatz soll er, sobald das Tor geöffnet wurde, im Ziel abliefern.
+	\subsection{Und jetzt alle zusammen\dots}
+	Die Schatzkiste und der Schlüssel befinden sich auf verschiedenen Tischen. \\
+	All diese Roboter beginnen ihre Aufgabe im Startbereich (siehe Abbildung \ref{bild_tisch}) und müssen sich nach getaner Arbeit im Endbereich einfinden.
+	\begin{figure}[H]
+		\centering
+		\def\svgwidth{14cm}
+		\input{Lageplan.pdf_tex}
+		\caption{Aufbau und Platzierung}
+		\label{bild_tisch}
+	\end{figure}
+
+	\section{Voraussetzungen}
+	Um diese Aufgaben zu lösen, stehen uns folgende Ressourcen zur Verfügung:
+	\begin{itemize}
+		\item 12 Arbeitskräfte
+		\item 5 Lego Mindstorms-Baukästen
+		\item 12 Tage à 7 Stunden (+ Nachtschichten)
+		\item Motivationskuchen (kindly provied by Sabine)
+		\item Einen Arbeitsraum mit Whiteboard
+	\end{itemize}
+	\begin{landscape}
+		\section{Lösungsansatz}
+		\begin{figure}[H]
+			\def\svgwidth{\linewidth}
+			\input{Zeichnung_v2.pdf_tex}
+			\caption{Ablauf als DFA}
+		\end{figure}
+	\end{landscape}
+	\begin{description}
+		\item[1] Brügge baut Brücke auf
+
+		\item[2] Schlüssi sucht auf T1, Schatzi fährt über Brücke auf T2, sucht dort
+
+		\item[3a] Schlüssi findet Schatz
+		\item[3b] Schlüssi findet Schlüssel
+		\item[3c] Schatzi findet Schlüssel
+		\item[3d] Schatzi findet Schatz
+
+		\item[4a] Schlüssi stellt Schatz auf [a]
+		\item[4b] Schlüssi stellt Schlüssel auf [b]
+		\item[4c] Schatzi stellt Schlüssel auf [d]
+		\item[4d] Schatzi stellt Schatz auf [c]
+
+		\item[5a] alle suchen Schlüssel
+		\item[5b] alle suchen Schatz
+		\item[5c] alle suchen Schatz
+		\item[5d] alle suchen Schlüssel
+
+		\item[6a] Schlüssi findet Schlüssel
+		\item[6b] Schatzi findet Schlüssel
+		\item[6c] Schlüssi findet Schatz
+		\item[6d] Schatzi findet Schatz
+		\item[6e] Schlüssi findet Schatz
+		\item[6f] Schatzi findet Schatz
+		\item[6g] Schlüssi findet Schlüssel
+		\item[6h] Schatzi findet Schlüssel
+
+		\item[7a] Schlüssi stellt Schatz auf [a], nimmt Schlüssel von [b] wieder auf
+		\item[7b] Schlüssi nimmt Schlüssel von [b] wieder auf
+		\item[7c] Schatzi stellt Schlüssel auf [d]
+		\item[7d] Schlüssi stellt Schatz auf [a]
+		\item[7e] Schatzi stellt Schlüssel auf [d]
+
+		\item[8a] Schlüssi fährt mit Schlüssel über Brücke auf T2, zum Tor, öffnet dieses
+		\item[8b] Schlüssi fährt mit Schlüssel über Brücke auf T2, zum Tor, öffnet dieses
+		\item[8c] Schlüssi fährt über Brücke auf T2, holt Schlüssel von [d], zum Tor, öffnet dieses
+		\item[8d] Schlüssi fährt über Brücke auf T2, holt Schlüssel von [d], zum Tor, öffnet dieses
+		\item[8e] Schlüssi fährt über Brücke auf T2, holt Schlüssel von [d], zum Tor, öffnet dieses
+
+		\item[9a] Schatzi fährt über Brücke auf T1, holt Schatz von [a], fährt über Brücke auf T2
+		\item[9b] Schatzi holt Schatz von [c]
+
+		\item[10] Schatzi fährt durch's Tor
+
+		\item[11] Brügge fährt ins's Ziel
+	\end{description}
+
+	\section{Probleme}
+	\begin{description}
+		\item[Lego] Uns stehen nur fünf Kästen, die nur wenig Bauteile enthalten zur Verfügung. Dadurch gestaltet sich vor allem der Aufbau von Tor- und Brückenroboter (Thor und Wall-E) schwierig. Zur Bewältigung dieser Herausforderung werden auch andere Materialien einbezogen.
+		\item[Technik] Die Anzahl der Motoren bzw. Sensoren ist pro NXT-Brick beschränkt. Bei allen fahrenden Robotern kann neben den zwei Antrieben nur noch ein weiterer Aktor (z.B. Greifarm) verwendet werden. Dies lässt sich lösen, indem man dem Aktor mehrere Aufgaben zuordnet (Greifarm und Ultraschallsensor heben und senken). \\
+			Außerdem wird die Genauigkeit der Navigation nach jeder Lenkbewegung zunehmend schlechter, d.h. falsche Koordinaten werden angenommen.
+		\item[Programmierung] Bei der Implementierung wird die Problematik der ungenauen Koordinaten dadurch umgangen, dass der Roboter in den Modus „drunken search“ schaltet und in Schlangenlinien den Tisch absucht. Die dabei verloren gegangene Orientierung wird wiedererlagt, indem bis zur Tischkante/ -ecke gefahren wird und dort eine Rekalibrierung stattfindet.
+		\item[Aufgabe] Aufgabenstellung ist nicht eindeutig/ enthält einen großen Interpretationsspielraum. 
+	\end{description}
+	\section{Zeitplan und Aufgabenverteilung}
+	\begin{table}[H]
+		\begin{tabularx}{\linewidth}{|l|l|l|l|}
+			\hline
+			\sfb Name & \sfb Roboter & \sfb Aufgabe & \sfb Deadline \\
+			\hline
+			Mark, Milena, Sabine & Thor & Bau & 3.3. \\
+			Mark, Milena, Sabine & Thor & Implementierung & 7.3. Abends \\
+			Flo, Daniel & Thor & Testen & 7.3. Abends \\
+			Flo, Daniel, (Linus, Maxi, Martin) & Brücke & Bau & 3.3. \\
+			Flo, Daniel & Brücke & Implementierung & 8.3. Abends \\
+			Mark, Milena, Sabine & Brücke & Testen & 8.3. Abends \\
+			Stefan, Alex, Steven, Alex & Schatz & Bau & 3.3. \\
+			Stefan, Alex, Alex & Schatz & Implementierung & 10.3. Mittag \\
+			Martin, Steven & Schatz & Testen & 10.3. Mittags \\
+			Linus, Maxi, Martin & Schlüssel & Bau & 3.3. \\
+			Martin, Steven & Schlüssel & Implementierung & 10.3. Mittag \\
+			Stefan, Alex, Alex & Schlüssel & Test & 10.3. Mittag \\
+			Linus, Maxi, Martin & Skynet & Implementierung & 8.3. \\
+			Alle & Alle & Grundfunktionentest & 7.3. Morgen/ Abend \\
+			Alle & Alle & Alles Testen & 16.3. \\
+			Sabine, Martin & --- & Planungsübericht & 4.3. \\
+			\hline
+		\end{tabularx}
+	\end{table}
+	Gruppenmitglieder, die ihre Aufgaben abgearbeitet haben, verteilen sich auf andere Gruppen.
+\end{document}

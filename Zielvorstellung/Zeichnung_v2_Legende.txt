@@ -1,0 +1,46 @@
+1) Brügge baut Brücke auf
+
+2) Schlüssi sucht auf T1, Schatzi fährt über Brücke auf T2, sucht dort
+
+3a) Schlüssi findet Schatz
+3b) Schlüssi findet Schlüssel
+3c) Schatzi findet Schlüssel
+3d) Schatzi findet Schatz
+
+4a) Schlüssi stellt Schatz auf [?]
+4b) Schlüssi stellt Schlüssel auf [?]
+4c) Schatzi stellt Schlüssel auf [?]
+4d) Schatzi stellt Schatz auf [?]
+
+5a) alle suchen Schlüssel
+5b) alle suchen Schatz
+5c) alle suchen Schatz
+5d) alle suchen Schlüssel
+
+6a) Schlüssi findet Schlüssel
+6b) Schatzi findet Schlüssel
+6c) Schlüssi findet Schatz
+6d) Schatzi findet Schatz
+6e) Schlüssi findet Schatz
+6f) Schatzi findet Schatz
+6g) Schlüssi findet Schlüssel
+6h) Schatzi findet Schlüssel
+
+7a) Schlüssi stellt Schatz auf [?], nimmt Schlüssel von [?] wieder auf
+7b) Schlüssi nimmt Schlüssel von [?] wieder auf
+7c) Schatzi stellt Schlüssel auf [?]
+7d) Schlüssi stellt Schatz auf [?]
+7e) Schatzi stellt Schlüssel auf [?]
+
+8a) Schlüssi fährt mit Schlüssel über Brücke auf T2, zum Tor, öffnet dieses
+8b) Schlüssi fährt mit Schlüssel über Brücke auf T2, zum Tor, öffnet dieses
+8c) Schlüssi fährt über Brücke auf T2, holt Schlüssel von [?], zum Tor, öffnet dieses
+8d) Schlüssi fährt über Brücke auf T2, holt Schlüssel von [?], zum Tor, öffnet dieses
+8e) Schlüssi fährt über Brücke auf T2, holt Schlüssel von [?], zum Tor, öffnet dieses
+
+9a) Schatzi fährt über Brücke auf T1, holt Schlüssel von [?], fährt über Brücke auf T2
+9b) Schatzi holt Schlüssel von [?]
+
+10) Schatzi fährt durch's Tor
+
+11) Brügge fährt ins's Ziel

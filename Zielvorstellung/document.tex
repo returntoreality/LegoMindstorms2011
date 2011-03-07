@@ -1,0 +1,97 @@
+\documentclass[a4paper]{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[ngermanb]{babel}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{units}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{color}
+\usepackage{float}
+\title{Lost Vikings in Lego-Mindstorms}
+\author{Gruppe 1}
+\date{}
+\begin{document}
+	\maketitle
+	\section{Zielvorstellung}
+	Um die im Rahmen des Lego-Mindstorms Programmierpraktikums gestellte Großaufgabe zu bewältigen, sind folgende Teile zu bearbeiten:
+	\subsection{Schildroboter (\texttt{Wall-E})}
+	Die Bearbeitung der Aufgabe erstreckt sich über zwei Tische. Diese befinden sich im Abstand von \unit[15]{cm}. Daher ist es notwendig eine Brücke zu konstruieren. Diese wird von Wall-E bereitgestellt und platziert.
+	\subsection{Schlüsselroboter (E.T.)}
+	Der Schlüsselroboter muss ein Tor öffnen, das sich auf dem zweiten Tisch befindet. Dies geschieht mithilfe eines RFID%\footnote{Radio Frequency Identification}
+- Tags, welches auf einem Schlüssel angebracht ist. Der Schlüssel befindet sich auf einem der beiden Tische.
+	\subsection{Torroboter (Thor)}
+	Die einzige Daseinsberechtigung zieht Thor aus der Aufgabe, das Tor zum Zielbereich zu önffen. Dies geschieht nur nach Vorzeigen des RFID- Schlüssels.
+	\subsection{Schatzroboter (Nummer 5)}
+	Der Schatzroboter soll die Schatzkiste finden, die sich auch auf einem der beiden Tische befindet. Sein Schatz soll er, sobald das Tor geöffnet wurde, im Ziel abliefern.
+	\subsection{Und jetzt alle zusammen\dots}
+	Die Schatzkiste und der Schlüssel befinden sich auf verschiedenen Tischen. \\
+	All diese Roboter beginnen ihre Aufgabe im Startbereich (siehe Abbildung \ref{bild_tisch}) und müssen sich nach getaner Arbeit im Endbereich einfinden.
+	\begin{figure}[H]
+		\centering
+		\def\svgwidth{12cm}
+		\input{Lageplan.pdf_tex}
+		\caption{Aufbau und Platzierung}
+		\label{bild_tisch}
+	\end{figure}
+
+	\section{Voraussetzungen}
+	Um diese Aufgaben zu lösen, stehen uns folgende Ressourcen zur Verfügung:
+	\begin{itemize}
+		\item 12 Arbeitskräfte
+		\item 5 Lego Mindstorms-Baukästen
+		\item 12 Tage à 7 Stunden (+ Nachtschichten)
+		\item Motivationskuchen (kindly provied by Sabine)
+		\item Einen Arbeitsraum mit Whiteboard
+	\end{itemize}
+	\section{Lösungsansatz}
+	\begin{figure}[H]
+		\caption{Ablauf als DFA}
+		\def\svgwidth{\linewidth}
+		\input{Zeichnung.pdf_tex}
+	\end{figure}
+	\begin{description}
+		\item[0] Brückenroboter fährt los, legt Brücke, sperrt Brücke auf Tisch 1
+		\item[1] Schlüsselroboter fährt los, sucht Objekt (Schlüssel \emph{und} Schatz) auf Tisch 1
+		\item[2a] Schlüsselroboter findet Schlüssel und bleibt stehen
+		\item[2b] Schlüsselroboter findet Schatz
+		\item[3a] Brückenroboter gibt Brücke frei und geht auf Tisch 2 ins Eck', damit Schatzroboter auf Tisch 2 suchen kann, Schatzroboter fährt auf Tisch 2 und sucht dort den Schatz.
+		\item[3b] Brückenroboter gibt Brücke frei und geht auf Tisch 2 ins Eck', damit Schlüsselroboter auf Tisch 2 suchen kann, Schlüsselroboter übergibt ungefähre Koordinaten des Schatzes an Schatzroboter, Schlüsselroboter fährt auf Tisch 2 und sucht dort den Schlüssel, Schatzroboter fährt los, sucht Schatz auf Tisch 1.
+		\item[4a] Schatz wird gefunden, Schatzroboter bleibt stehen, Schlüsselroboter fährt auf Tisch 2 und sprerrt Tor auf
+		\item[4b] Schlüssel und Schatz sind gefunden, Schatzroboter geht zur Brücke und wartet dort, Schlüs\-sel\-ro\-bo\-ter schließt Tor auf
+		\item[5] Schlüsselroboter geht durch das Tor, stellt sich in's Eck'
+		\item[6] Brückenroboter geht in's Ziel, stellt sich in's andere Eck'
+		\item[7] Schatzroboter betritt den Endbereich und bleibt stehen.
+	\end{description}
+
+	\section{Probleme}
+	\begin{description}
+		\item[Lego] Uns stehen nur fünf Kästen, die nur wenig Bauteile enthalten zur Verfügung. Dadurch gestaltet sich vor allem der Aufbau von Tor- und Brückenroboter (Thor und Wall-E) schwierig. Zur Bewältigung dieser Herausforderung werden auch andere Materialien einbezogen.
+		\item[Technik] Die Anzahl der Motoren bzw. Sensoren ist pro NXT-Brick beschränkt. Bei allen fahrenden Robotern kann neben den zwei Antrieben nur noch ein weiterer Aktor (z.B. Greifarm) verwendet werden. Dies lässt sich lösen, indem man dem Aktor mehrere Aufgaben zuordnet (Greifarm und Ultraschallsensor heben und senken). \\
+			Außerdem wird die Genauigkeit der Navigation nach jeder Lenkbewegung zunehmend schlechter, d.h. falsche Koordinaten werden angenommen.
+		\item[Programmierung] Bei der Implementierung wird die Problematik der ungenauen Koordinaten dadurch umgangen, dass der Roboter in den Modus „drunken search“ schaltet und in Schlangenlinien den Tisch absucht. Die dabei verloren gegangene Orientierung wird wiedererlagt, indem bis zur Tischkante/ -ecke gefahren wird und dort eine Rekalibrierung stattfindet.
+		\item[Aufgabe] Aufgabenstellung ist nicht eindeutig/ enthält einen großen Interpretationsspielraum. 
+	\end{description}
+	\section{Zeitplan und Aufgabenverteilung}
+	\begin{tabularx}{\linewidth}{|l|l|l|l|}
+		\hline
+		\sfb Name & \sfb Roboter & \sfb Aufgabe & \sfb Deadline \\
+		\hline
+		Mark, Milena, Sabine & Thor & Bau & 3.3. \\
+		Mark, Milena, Sabine & Thor & Implementierung & 7.3. Abends \\
+		Flo, Daniel & Thor & Testen & 7.3. Abends \\
+		Flo, Daniel, (Linus, Maxi, Martin) & Brücke & Bau & 3.3. \\
+		Flo, Daniel & Brücke & Implementierung & 8.3. Abends \\
+		Mark, Milena, Sabine & Brücke & Testen & 8.3. Abends \\
+		Stefan, Alex, Steven, Alex & Schatz & Bau & 3.3. \\
+		Stefan, Alex, Alex & Schatz & Implementierung & 10.3. Mittag \\
+		Martin, Steven & Schatz & Testen & 10.3. Mittags \\
+		Linus, Maxi, Martin & Schlüssel & Bau & 3.3. \\
+		Martin, Steven & Schlüssel & Implementierung & 10.3. Mittag \\
+		Stefan, Alex, Alex & Schlüssel & Test & 10.3. Mittag \\
+		Linus, Maxi, Martin & Skynet & Implementierung & 8.3. \\
+		Alle & Alle & Grundfunktionentest & 7.3. Morgen/ Abend \\
+		Alle & Alle & Alles Testen & 16.3. \\
+		Sabine, Martin & --- & Planungsübericht & 4.3. \\
+		\hline
+	\end{tabularx}
+\end{document}
